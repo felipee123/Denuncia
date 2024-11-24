@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render, redirect # type: ignore
 from .forms import DenunciaForm
 from django.contrib import messages # type: ignore
@@ -11,4 +12,4 @@ def registrar_denuncia(request):
             return redirect('registrar_denuncia')
     else:
         form = DenunciaForm()
-    return render(request, 'denuncias/registrar_denuncia.html', {'form': form})
+    return render(request, 'denuncia/registrar_denuncia.html',{'form': form})
