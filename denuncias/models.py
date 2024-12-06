@@ -1,23 +1,26 @@
-from django.db import models # type: ignore
+from django.db import models
+import uuid
 
 class Denuncia(models.Model):
-    ANONIMA = 'AN'
-    IDENTIFICADA = 'ID'
-    TIPOS_REPORTE = [
-        (ANONIMA, 'Anônima'),
-        (IDENTIFICADA, 'Identificada'),
+    CATEGORY_CHOICES = [
+        ('vulnerability', 'Vulnerabilidade'),
+        ('data_breach', 'Vazamento de dados'),
+        ('other', 'Outro'),
+    ]
+    STATUS_CHOICES = [
+        ('pending', 'Pendente'),
+        ('in_progress', 'Em analise'),
+        ('resolved', 'Resolvido'),
     ]
 
-    tipo_reporte = models.CharField(
-        max_length=2,
-        choices=TIPOS_REPORTE,
-        default=ANONIMA
-    )
-    nome = models.CharField(max_length=100, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
-    descricao = models.TextField()
-    data_criacao = models.DateTimeField(auto_now_add=True)
-    arquivo_anexo = models.FileField(upload_to='anexos/', blank=True, null=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    is_anonymous = models.BooleanField(default=True)
+    reporter_email = models.EmailField(blank=True, null=True)
+    token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Denúncia #{self.id} - {self.tipo_reporte}"
+        return self.title

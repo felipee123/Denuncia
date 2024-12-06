@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Denúncias.com</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/report_success.css' %}">
+</head>
+<body>
+  <header class="header"><h1>Denúncias.com</h1></header>
+
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Denúncias.com</p>
+  </footer>
+</body>
+</html>

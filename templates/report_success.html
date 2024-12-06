@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="form-title">Denúncia feita com sucesso</h1>
+    <div class="token-content">
+        <p class="token">Seu token é: <strong>{{ token }}</strong></p>
+        <p class="warning">Guarde bem esse token para que possa pesquisar sua denúncia e ver o status dela.</p>
+    </div>
+    <a href="{% url 'home' %}" class="back-button">Voltar para o início</a>
+{% endblock %}

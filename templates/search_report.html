@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="form-title">Procure por sua denúncia</h1>
+    <form method="post" class="report-form">
+        {% csrf_token %}
+        <label for="token">Digite seu token:</label>
+        <input type="text" name="token" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+    <a href="{% url 'home' %}" class="back-button">Voltar para o início</a>
+{% endblock %}

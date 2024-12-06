@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="home-welcome">Bem-vindo ao Denúncias.com</h1>
+    <div class="home-buttons">
+        <div class="report-buttons">
+            <a href="{% url 'anonymous_report' %}" class="report-button">
+                <button class="anonymous-button">
+                    Denúncia anônima
+
+                    <span>Faça sua denúncia de forma totalmente anônima e segura.</span>
+                </button>
+            </a>
+            <a href="{% url 'non_anonymous_report' %}" class="report-button">
+                <button class="non-anonymous-button">
+                    Denúncia não anônima
+
+                    <span>Faça sua denúncia e identifique-se através do seu e-mail pessoal.</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="search-reporting">
+            <h4 class="search-title">Já fez uma denúncia?</h4>
+            <a href="{% url 'search_report' %}" class="search-button">
+                <button>
+                    Pesquise por ela aqui
+
+                    <span>Use o token da denúncia para pesquisar</span>
+                </button>
+            </a>
+        </div>
+    </div>
+{% endblock %}
