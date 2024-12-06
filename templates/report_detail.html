@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="form-title">Report Details</h1>
+    <div class="detail-content">
+        <p><strong>Título:</strong> {{ report.title }}</p>
+        {% if report.reporter_email %}
+        <p><strong>Email do denunciante:</strong> {{ report.reporter_email }}</p>
+        {% endif %}
+        <p><strong>Descrição:</strong> {{ report.description }}</p>
+        <p><strong>Categoria:</strong> {{ report.get_category_display }}</p>
+        <p><strong>Status:</strong> {{ report.get_status_display }}</p>
+    </div>
+    <a href="{% url 'home' %}" class="back-button">Voltar para o início</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="form-title">Envie sua denúncia</h1>
+    <form method="post" class="report-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+    <a href="{% url 'home' %}" class="back-button">Voltar para o início</a>
+{% endblock %}

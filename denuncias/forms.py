@@ -1,10 +1,15 @@
-from django import forms # type: ignore
+from django import forms
 from .models import Denuncia
 
-class DenunciaForm(forms.ModelForm):
+class ReportForm(forms.ModelForm):
     class Meta:
         model = Denuncia
-        fields = ['tipo_reporte', 'nome', 'email', 'descricao', 'arquivo_anexo']
-        widgets = {
-            'descricao': forms.Textarea(attrs={'rows': 5}),
-        }
+        fields = ['title', 'description', 'category']
+
+class NonAnonymousReportForm(forms.ModelForm):
+    email = forms.EmailField(required=True)  # Adicionando campo personalizado
+
+    class Meta:
+        model = Denuncia
+        fields = ['title', 'description', 'category']
+
